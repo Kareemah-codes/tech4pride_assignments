@@ -1,6 +1,7 @@
 
 
-function manipulate_str(sentence,commands){
+function manipulate_str(sentence,commands){  
+
     sentence = sentence.toLowerCase().trim()
     sentenceVersions =[];
 
@@ -43,8 +44,7 @@ function manipulate_str(sentence,commands){
 
             sentenceVersions.push(sentence)
         }
-
-    
+}
 }
 
-manipulate_str('I love God and Jesus is my savior',['U ']);
+manipulate_str('I love God and Jesus is my savior',['U '])

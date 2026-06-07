@@ -4,9 +4,9 @@ commands =['r','L','z','C o a'];
     commands.forEach((command)=>{command.toLowerCase()})
 
      //console.log(commands)
-     if(commands.includes(/C \w \w/)){
-            sentence = sentence.replace()
-            sentenceVersions.push(sentence)
+      if(commands.includes('z')){
+            sentenceVersions.pop()
+            sentence = sentenceVersions[-1];
         }
         console.log(sentence)
         
