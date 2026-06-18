@@ -1,18 +1,20 @@
 //Bank Account class
 class BankAccount{
-    constructor(accBal){
+    constructor(initialBal){
         // pass initial value, then initiate to account Balance
-       this.accBal = accBal;
-       
-       //Accounts initialized with a negative balance should display an error and start with a balance of 0
-       if (this.accBal <0) {
-        this.accBall =0;
+       this.initialBal = initialBal;
+
+       //Validate initial ball
+       if (this.initialBal >= 0) {
+        let accBal = this.initialBal;
+       }
+        else{
+        let accBal = 0;
         console.log(`Can't start account with negative value`)
-         
        }
     }
 
-    //Methods
+    //METHODS
 
     //validate if amount is less than zero, a string, not a number,not negative
     creditAmount(amount){
