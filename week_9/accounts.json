@@ -40,5 +40,14 @@
         "accNum": 273456785,
         "is_active": false
 
+    },
+
+    {
+        "name" : "Ibrahim Akinyele",
+        "accBal": 50,
+        "accNum": 273456785,
+        "is_active": true
+
     }
+
 ]

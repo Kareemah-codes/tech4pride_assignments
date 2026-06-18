@@ -1,74 +1,58 @@
 //Bank Account class
-
-
-const fs = require('fs')
 let accounts;
+const fs = require('fs')
 function readJson(){
-
-    fs.readFile("./accounts.json",(err, data)=>{
-        if(err){
-            console.log("File read failed because: ",err);
-        }
-        try{
-        const account = JSON.parse(data)
-        account += accounts
-        } catch(err){
-            console.log("Error retrieveing JSON string because: ", err)
-        }
-
-    })
+    data = JSON.parse(fs.readFileSync("./accounts.json"))
+    accounts = data
 }
-
-
 readJson()
 
-class BankAccount{
-    constructor(name,accBal,accNum,is_active){
-    this.name = accounts.name;
-    this.accBal = accounts.accBal;
-    this.accNum = accounts.accNum;
-    this.is_active = accounts.is_active;
 
-       
-       //Accounts initialized with a negative balance should display an error and start with a balance of 0
-       if (this.accBal <0) {
-        this.accBall =0;
+class BankAccount{
+    constructor(initialBal,name,accNum,is_active){
+       this.initialBal = initialBal;
+       this.name = accounts.name;
+       this.accNum = accounts.accNum;
+       this.is_active= accounts.is_active;
+
+       //Validate initial ball
+       if (this.initialBal >= 0) {
+       accounts.accBal = this.initialBal;
+       }
+        else{
+        accounts.accBal = 0;
         console.log(`Can't start account with negative value`)
-         
+        return
        }
     }
 
-    //Methods
+    //METHODS
 
-    creditAmount(amount){
-        this.accBal +=amount //validate input, validate accBal
-    };
+    //validate if amount is less than zero, a string, not a number,not negative
+    creditAmount(accNum,amount){
+        
+        if (amount<= 0 || !(Number.isFinite(amount)) ){
+            console.log('Amount invalid')
+            return;
+        }
+        else {
+            accBal +=amount
+        }
+    }
+
 
     debitAmount(amount){
-        if (amount > this.accBal){
-            console.log("Debit amount exceeds account balance")
+        if (amount > accBal||amount< 0 || !(Number.isFinite(amount))){
+            console.log("Debit amount exceeds account balance or Amount invalid")
+            return
         }
-        else this.accBal -=amount
+        else accBal -=amount;
     }
 
     getBalance(){
-        return this.accBal
+        return accBal;
     }
 
 }
 
-//Objects
-let salaryAccount = new BankAccount(500);
-salaryAccount.creditAmount(700)
-salaryAccount.debitAmount(2000)
-console.log(salaryAccount.getBalance()); //An attempted debit that exceeds the balance (triggering the error message).
 
-let savingsAccount = new BankAccount(-250); 
-savingsAccount.creditAmount(100)
-savingsAccount.debitAmount(50)
-console.log(savingsAccount.getBalance())
-
-let currentAccount = new BankAccount(-150);
-currentAccount.creditAmount(35)
-currentAccount.debitAmount(80)
-console.log(currentAccount.getBalance())
