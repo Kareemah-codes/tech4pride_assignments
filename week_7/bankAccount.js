@@ -1,4 +1,5 @@
 //Bank Account class
+let accBal;
 class BankAccount{
     constructor(initialBal){
         // pass initial value, then initiate to account Balance
@@ -6,10 +7,10 @@ class BankAccount{
 
        //Validate initial ball
        if (this.initialBal >= 0) {
-        let accBal = this.initialBal;
+        accBal = this.initialBal;
        }
         else{
-        let accBal = 0;
+        accBal = 0;
         console.log(`Can't start account with negative value`)
        }
     }
@@ -18,18 +19,23 @@ class BankAccount{
 
     //validate if amount is less than zero, a string, not a number,not negative
     creditAmount(amount){
-        this.accBal +=amount
-    };
+        if (amount<= 0 || !(Number.isFinite(amount)) )
+            console.log('Amount invalid')
+        else {
+            accBal +=amount
+        }
+    }
+
 
     debitAmount(amount){
-        if (amount > this.accBal){
-            console.log("Debit amount excedds account balance")
+        if (amount > accBal||amount< 0 || !(Number.isFinite(amount))){
+            console.log("Debit amount exceeds account balance or Amount invalid")
         }
-        else this.accBal -=amount
+        else accBal -=amount;
     }
 
     getBalance(){
-        return this.accBal
+        return accBal;
     }
 
 }
@@ -37,8 +43,8 @@ class BankAccount{
 //Objects
 let salaryAccount = new BankAccount(500);
 salaryAccount.creditAmount(700)
-salaryAccount.debitAmount(2000)
-console.log(salaryAccount.getBalance()); //An attempted debit that exceeds the balance (triggering the error message).
+salaryAccount.debitAmount(100)
+console.log(salaryAccount.getBalance()); 
 
 let savingsAccount = new BankAccount(-250); 
 savingsAccount.creditAmount(100)
