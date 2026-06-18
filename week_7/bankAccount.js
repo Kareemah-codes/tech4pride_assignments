@@ -1,6 +1,7 @@
 //Bank Account class
 class BankAccount{
     constructor(accBal){
+        // pass initial value, then initiate to account Balance
        this.accBal = accBal;
        
        //Accounts initialized with a negative balance should display an error and start with a balance of 0
@@ -13,6 +14,7 @@ class BankAccount{
 
     //Methods
 
+    //validate if amount is less than zero, a string, not a number,not negative
     creditAmount(amount){
         this.accBal +=amount
     };
