@@ -1,0 +1,44 @@
+[
+    
+    {
+        "name" : "Ajina Ebun",
+        "accBal": 200,
+        "accNum": 273456781,
+        "is_active": true
+
+    },
+
+    
+    {
+        "name" : "Edosa Samuel",
+        "accBal": 500,
+        "accNum": 273456782,
+        "is_active": false
+
+    },
+
+    
+    {
+        "name" : "Nicholas Upaka",
+        "accBal": 1000,
+        "accNum": 273456783,
+        "is_active": true
+
+    },
+    
+    {
+        "name" : "Asabe Nasir",
+        "accBal": 1000,
+        "accNum": 273456784,
+        "is_active": true
+
+    },
+    
+    {
+        "name" : "Uche Ironuru",
+        "accBal": 300,
+        "accNum": 273456785,
+        "is_active": false
+
+    }
+]
