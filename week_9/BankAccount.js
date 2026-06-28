@@ -1,58 +1,47 @@
-//Bank Account class
-let accounts;
 const fs = require('fs')
-function readJson(){
-    data = JSON.parse(fs.readFileSync("./accounts.json"))
-    accounts = data
-}
-readJson()
 
+function writeToFile(accObj){
+    fs.writeFileSync("sample.json",JSON.stringify(accObj, 2)
+		);
+}
 
 class BankAccount{
-    constructor(initialBal,name,accNum,is_active){
-       this.initialBal = initialBal;
-       this.name = accounts.name;
-       this.accNum = accounts.accNum;
-       this.is_active= accounts.is_active;
-
-       //Validate initial ball
-       if (this.initialBal >= 0) {
-       accounts.accBal = this.initialBal;
-       }
-        else{
-        accounts.accBal = 0;
-        console.log(`Can't start account with negative value`)
-        return
-       }
+    constructor(){
+        this.accounts = JSON.parse(fs.readFileSync("accounts.json"))
     }
 
-    //METHODS
+    //Methods
 
-    //validate if amount is less than zero, a string, not a number,not negative
     creditAmount(accNum,amount){
-        
+        const account = this.accounts.find(acc => acc.accNum === accNum)
+        if(!account || !acc.is_active){
+            console.log("Account non existent or user inactive")
+        }
         if (amount<= 0 || !(Number.isFinite(amount)) ){
             console.log('Amount invalid')
             return;
-        }
-        else {
-            accBal +=amount
-        }
+        }else{
+            account.accBal = account.accBal + amount;
+            writeToFile(this.accounts)
+
+        };
+        
     }
 
+    debitAmount(accNum,amount){
+        const account = this.accounts.find(acc => acc.accNum === accNum);
 
-    debitAmount(amount){
-        if (amount > accBal||amount< 0 || !(Number.isFinite(amount))){
-            console.log("Debit amount exceeds account balance or Amount invalid")
-            return
+         if(!account || !acc.is_active){
+            console.log("Account non existent or user inactive")
         }
-        else accBal -=amount;
-    }
+        if (amount<= 0 || !(Number.isFinite(amount)) || amount>account.accBal ){
+            console.log('Amount invalid')
+            return;
+        }else{
+            account.accBal = account.accBal - amount;
+            writeToFile(this.accounts)
 
-    getBalance(){
-        return accBal;
-    }
+        };
 
+    }
 }
-
-
