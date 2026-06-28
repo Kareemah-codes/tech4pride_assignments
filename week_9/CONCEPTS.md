@@ -7,5 +7,5 @@ SOLID
 
 # CONCEPTS IN SOFTWARE ENGINEERING
 
-### SOLID
-SOLID 
+### DRY
+DRY (Don't Repeat Yourself)
