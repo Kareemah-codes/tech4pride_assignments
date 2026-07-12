@@ -2,7 +2,6 @@
   Implement delete and update user details
 */
 const express = require('express');
-/*Start a server*/
 const app = express();
 const PORT = 3000;
 
@@ -25,15 +24,21 @@ const users = [
   new User(5, 'Nic', 'nic@example.com'),
 ];
 
-// routes
-app.get('/', (req, res) => {
-  res.send("Homepage")
-})
-
 
 
 // CRUD -> create read update delete
-
+app.get('/',(req,res)=>{
+  res.send('Welcome to the User CRUD API')
+})
+//CREATE
+app.post('/users',(req,res)=>{
+  const {name,email}= req.body;
+  const newUser = new User(users.length + 1,name,email);
+  users.push(newUser);
+  res.status(201).json(newUser);
+})
+//READ
+//Retrieves all users
 app.get('/users', (req, res) => {
   res.status(200).json({
     status: true,
@@ -43,20 +48,20 @@ app.get('/users', (req, res) => {
     }
   });
 });
-
-app.get('/users/:variable', (req, res) => {
-  const params = req.params
-  const { variable: userId } = req.params
-
-  const user = users.find(user => user.id == userId)
-  if (!user) {
-    return res.status(404).json({message: 'User not found!'})
-  }
-
-  res.status(200).json({
-    data: user
-  })
+//Retrieves specific users
+app.get('/users/:id',(req,res)=>{
+    const user = users.find(user => user.id === Number(req.params.id));
+    if(!user){
+      return res.status(404).send('User not found');
+    }
+    res.json(user);
 });
+
+//UPDATE
+
+//DELETE
+
+
 
 app.post('/users', (req, res) => {
   const body = req.body
