@@ -68,7 +68,16 @@ app.put('/users/:id',(req,res)=>{
   res.json(user);
 })
 //DELETE
-
+app.delete('/users/:id',(req,res)=>{
+  const user = users.find(user => user.id === Number(req.params.id));
+  const userIndex = users.indexOf(user)
+  if(!user){
+    return res.status(404).send('User not found');
+  }
+  const deletedUser = users.splice(userIndex,1);
+  //res.json(deletedUser);
+  res.json(users); // users which still remain.
+});
 
 
 // invalid routes
