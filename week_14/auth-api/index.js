@@ -1,29 +1,28 @@
 // entry point, registers routes
 
-//Users can register,login and manage notes.
-// 1 user can have a set of notes that belong to that user only.
+const express = require("express");
+const app = express();
 
-/*
-Functions and enpoints
+require('dotenv').config();
+const port = process.env.PORT;
 
-/user/register -> POST REQUEST, enable users to register, validations must be put for user input
-/user/login -> POST REQUEST, user will input their username and password. 
-/user/note/read -> loads up a particular note associated with particular user
+const router = require('./router');
 
-/user/note/add -> enables user to create and add notes
+app.get('/', (req,res) => {
+    res.status(200).json({message:"This our notes homepage."})
+    res.send(req.body)
+})
 
-user/note/delete - enables user to delete notes.
+app.use('/', router);
 
-*/
 
-const express = require('express')
-const app = express()
+//handling invalid routes
 
-require('dotenv').config()
-const port = process.env.PORT
-
-//ROUTES
-
+app.use((req,res)=>{
+    res.status(404).json({
+        Error : "This route does not exist!"
+    })
+})
 
 //middleware
 app.use(express.json())

@@ -9,16 +9,21 @@
 user/note/delete - enables user to delete notes.
 
 */
+const express = require('express')
+const router = express.Router()
 
-app.post('/register',(req, res)=>{
-
+router.post('/register',(req, res)=>{
+    res.send('This is to register')
 })
-app.post('/login',(req,res)=>{})
 
-app.get('/profile',(req,res)=>{})
+router.post('/login',(req,res)=>{})
 
-app.post('/notes',(req,res)=>{})
+router.get('/profile',(req,res)=>{})
 
-app.get('/notes',(req,res)=>{})
+router.post('/notes',(req,res)=>{})
 
-app.patch('/notes/:id',(req,res)=>{})
+router.get('/notes',(req,res)=>{})
+
+router.patch('/notes/:id',(req,res)=>{})
+
+module.exports = router;
