@@ -1,4 +1,82 @@
 [
-    {"//" :"persisted user data (start with [])"}
-    
+  {
+    "id": 1,
+    "userId": 1,
+    "title": "My first note",
+    "body": "This is the content.",
+    "tag": "personal",
+    "createdAt": "2026-07-18T10:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "title": "Grocery list",
+    "body": "Milk, eggs, bread, and coffee.",
+    "tag": "shopping",
+    "createdAt": "2026-07-18T11:15:00.000Z"
+  },
+  {
+    "id": 3,
+    "userId": 3,
+    "title": "Project kickoff",
+    "body": "Discussed timeline and deliverables for Q3.",
+    "tag": "work",
+    "createdAt": "2026-07-19T09:30:00.000Z"
+  },
+  {
+    "id": 4,
+    "userId": 1,
+    "title": "Weekend plans",
+    "body": "Hiking trip with friends on Saturday.",
+    "tag": "personal",
+    "createdAt": "2026-07-19T14:45:00.000Z"
+  },
+  {
+    "id": 5,
+    "userId": 4,
+    "title": "Book recommendation",
+    "body": "Read 'Atomic Habits' - really insightful.",
+    "tag": "reading",
+    "createdAt": "2026-07-20T08:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "userId": 2,
+    "title": "Budget review",
+    "body": "Need to cut down on subscription services.",
+    "tag": "finance",
+    "createdAt": "2026-07-20T16:20:00.000Z"
+  },
+  {
+    "id": 7,
+    "userId": 5,
+    "title": "Meeting notes",
+    "body": "Client wants revised proposal by Friday.",
+    "tag": "work",
+    "createdAt": "2026-07-21T10:10:00.000Z"
+  },
+  {
+    "id": 8,
+    "userId": 3,
+    "title": "Recipe idea",
+    "body": "Try making homemade pasta this weekend.",
+    "tag": "food",
+    "createdAt": "2026-07-21T13:00:00.000Z"
+  },
+  {
+    "id": 9,
+    "userId": 6,
+    "title": "Workout plan",
+    "body": "Increase reps for upper body exercises.",
+    "tag": "fitness",
+    "createdAt": "2026-07-22T07:30:00.000Z"
+  },
+  {
+    "id": 10,
+    "userId": 4,
+    "title": "Travel checklist",
+    "body": "Passport, tickets, chargers, and itinerary.",
+    "tag": "travel",
+    "createdAt": "2026-07-22T09:00:00.000Z"
+  }
 ]
