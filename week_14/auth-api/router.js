@@ -1,19 +1,35 @@
-//all route definitions
+//router.js
+const express = require('express');
+const router = express.Router();
 
-/*user/register -> POST REQUEST, enable users to register, validations must be put for user input
-/user/login -> POST REQUEST, user will input their username and password. 
-/user/note/read -> loads up a particular note associated with particular user
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
-/user/note/add -> enables user to create and add notes
-
-user/note/delete - enables user to delete notes.
-
-*/
-const express = require('express')
-const router = express.Router()
-
-router.post('/register',(req, res)=>{
-    res.send('This is to register')
+const { v4: uuidv4 } = require('uuid');
+const{readUsers, writeUsers} = require('./userStore')
+router.post('/register',async (req, res)=>{
+    /* Logic => accepts the username, password, hash password,add this to. Check theif the user exist*/
+    const user = await readUsers();
+    const existingUser = user.find(u => u.username === req.body.username );
+    if (existingUser){
+       res.status(400).json({error:'user already exists'})
+    }else{
+        const today = new Date()
+        const hashedPassword =await bcrypt.hash(req.body.password, saltRounds);
+        const newUser ={
+            id: uuidv4(),
+            username:user.username,
+            password:hashedPassword,
+            createdAt: today.toISOString()
+        };
+        user.push(newUser);
+        await writeUsers(user)
+        res.status(201).json({id: newUser.id,
+            username: newUser.username,
+            password:newUser.password,
+            createdAt: newUser.createdAt})
+    }
+    
 })
 
 router.post('/login',(req,res)=>{})

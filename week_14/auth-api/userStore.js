@@ -1,10 +1,11 @@
 // USERS
+//userStore.js
 const fs = require('fs/promises')
 const path = 'users.json';
 
 async function readUsers(){
     try {
-      data = await fs.readFile(path,'utf-8');
+      const data = await fs.readFile(path,'utf-8');
       return JSON.parse(data)
     }
     catch (err){
@@ -12,17 +13,13 @@ async function readUsers(){
     }
 }
 
-async function writeUsers(users){
+async function writeUsers(user){
     try{
-        const newUser = '';
-        await fs.writeFile(path,content)
+        const data = JSON.stringify(user,null,2)
+        await fs.writeFile(path,data)
     } catch(err){
         console.log(`Error ... ${err}`)
     }
 }
 
-async function main(){
-    const users = await readUsers();
-    
-}
-main();
+module.exports ={readUsers, writeUsers}

@@ -1,82 +1,67 @@
 [
   {
-    "id": 1,
-    "userId": 1,
-    "title": "My first note",
-    "body": "This is the content.",
-    "tag": "personal",
+    "id": "3f9a1b2c-4d5e-4f60-8a71-9b2c3d4e5f60",
+    "username": "ada",
+    "password": "$2b$10$N9qo8uLOickgx2ZMRZoMy.MHPCzMbdN.7hqYQKJnO/L8kMj9dQ8Xy",
     "createdAt": "2026-07-18T10:00:00.000Z"
   },
   {
-    "id": 2,
-    "userId": 2,
-    "title": "Grocery list",
-    "body": "Milk, eggs, bread, and coffee.",
-    "tag": "shopping",
-    "createdAt": "2026-07-18T11:15:00.000Z"
+    "id": "7c8d9e0f-1a2b-4c3d-9e4f-5a6b7c8d9e0f",
+    "username": "grace",
+    "password": "$2b$10$KIXqM3z8u1J7nR5t2wYqpO0FgH8kLpNc9dJ6eSbXvW3rTzYo4iAeS",
+    "createdAt": "2026-07-19T09:15:00.000Z"
   },
   {
-    "id": 3,
-    "userId": 3,
-    "title": "Project kickoff",
-    "body": "Discussed timeline and deliverables for Q3.",
-    "tag": "work",
-    "createdAt": "2026-07-19T09:30:00.000Z"
+    "id": "1e2f3a4b-5c6d-4e7f-8a9b-0c1d2e3f4a5b",
+    "username": "linus",
+    "password": "$2b$10$rTf8sVQnZ2xLpKw9mHc7BeD3aGj6oYuI0nWx5tRq1sVbNc4kLm8eO",
+    "createdAt": "2026-07-19T15:40:00.000Z"
   },
   {
-    "id": 4,
-    "userId": 1,
-    "title": "Weekend plans",
-    "body": "Hiking trip with friends on Saturday.",
-    "tag": "personal",
-    "createdAt": "2026-07-19T14:45:00.000Z"
+    "id": "9d8c7b6a-5f4e-4d3c-2b1a-0f9e8d7c6b5a",
+    "username": "margaret",
+    "password": "$2b$10$Uw3xJb7NcM1qYtR8sVfKzeD0oHl2aGp9nWx6rTf4kSb1cLm3qYaXi",
+    "createdAt": "2026-07-20T08:20:00.000Z"
   },
   {
-    "id": 5,
-    "userId": 4,
-    "title": "Book recommendation",
-    "body": "Read 'Atomic Habits' - really insightful.",
-    "tag": "reading",
-    "createdAt": "2026-07-20T08:00:00.000Z"
+    "id": "2a4b6c8d-0e1f-4a2b-8c3d-4e5f6a7b8c9d",
+    "username": "alan",
+    "password": "$2b$10$Zk9mLp3qYt7RfN2xJb0oHc4dGe6aWx8sVfK1zTb5rNc9qLm2oYaSi",
+    "createdAt": "2026-07-21T12:05:00.000Z"
   },
   {
-    "id": 6,
-    "userId": 2,
-    "title": "Budget review",
-    "body": "Need to cut down on subscription services.",
-    "tag": "finance",
-    "createdAt": "2026-07-20T16:20:00.000Z"
+    "id": "da58ef63-8c35-4156-b41a-77a086818efc",
+    "username": "",
+    "password": "",
+    "createdAt": "2026-07-24T22:03:10.863Z"
   },
   {
-    "id": 7,
-    "userId": 5,
-    "title": "Meeting notes",
-    "body": "Client wants revised proposal by Friday.",
-    "tag": "work",
-    "createdAt": "2026-07-21T10:10:00.000Z"
+    "id": "aac3b5c3-bd77-49f7-af1a-126157d6f46a",
+    "username": "",
+    "password": "",
+    "createdAt": "2026-07-24T22:03:14.247Z"
   },
   {
-    "id": 8,
-    "userId": 3,
-    "title": "Recipe idea",
-    "body": "Try making homemade pasta this weekend.",
-    "tag": "food",
-    "createdAt": "2026-07-21T13:00:00.000Z"
+    "id": "39c60c15-1dad-45ed-94da-9ea8587e34ae",
+    "username": "",
+    "password": "",
+    "createdAt": "2026-07-24T22:03:35.167Z"
   },
   {
-    "id": 9,
-    "userId": 6,
-    "title": "Workout plan",
-    "body": "Increase reps for upper body exercises.",
-    "tag": "fitness",
-    "createdAt": "2026-07-22T07:30:00.000Z"
+    "id": "431176c6-2bee-485f-8a55-9e220db2592b",
+    "username": "hot boy",
+    "password": "",
+    "createdAt": "2026-07-24T22:04:23.818Z"
   },
   {
-    "id": 10,
-    "userId": 4,
-    "title": "Travel checklist",
-    "body": "Passport, tickets, chargers, and itinerary.",
-    "tag": "travel",
-    "createdAt": "2026-07-22T09:00:00.000Z"
+    "id": "8ca3c529-521e-493a-9cd0-3826bc37b831",
+    "username": "Pablet",
+    "password": "",
+    "createdAt": "2026-07-24T22:05:17.396Z"
+  },
+  {
+    "id": "d20f4039-c3f0-4d94-b5ce-87b146ad6ffc",
+    "password": "$2b$10$PvuSx6UcUvK31JX5nTxn8uFbgwlVk25NqLW.A8cwj0yvgbzffhU6m",
+    "createdAt": "2026-07-24T22:47:52.994Z"
   }
 ]
