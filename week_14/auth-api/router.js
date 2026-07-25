@@ -1,16 +1,19 @@
 //router.js
 const express = require('express');
 const router = express.Router();
+const { v4: uuidv4 } = require('uuid');
+const{readUsers, writeUsers} = require('./userStore')
+const jwt = require("jsonwebtoken");
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-const { v4: uuidv4 } = require('uuid');
-const{readUsers, writeUsers} = require('./userStore')
+
+
 router.post('/register',async (req, res)=>{
     /* Logic => accepts the username, password, hash password,add this to. Check theif the user exist*/
-    const user = await readUsers();
-    const existingUser = user.find(u => u.username === req.body.username );
+    const users = await readUsers();
+    const existingUser = users.find(u => u.username === req.body.username );
     if (existingUser){
        res.status(400).json({error:'user already exists'})
     }else{
@@ -18,13 +21,14 @@ router.post('/register',async (req, res)=>{
         const hashedPassword =await bcrypt.hash(req.body.password, saltRounds);
         const newUser ={
             id: uuidv4(),
-            username:user.username,
+            username:req.body.username,
             password:hashedPassword,
             createdAt: today.toISOString()
         };
         user.push(newUser);
         await writeUsers(user)
-        res.status(201).json({id: newUser.id,
+        res.status(201).json({
+            id: newUser.id,
             username: newUser.username,
             password:newUser.password,
             createdAt: newUser.createdAt})
@@ -35,23 +39,40 @@ router.post('/register',async (req, res)=>{
 router.post('/login',async(req,res)=>{
     //Collect user login, verify email,verify password, attached jwt token
     const{username,password} =req.body
-    const user = await readUsers()
+    const users = await readUsers()
+     const registeredUser = users.find(u=>u.username===username)
     try{
-        const registeredUser = user.find(u=>u.username===username)
-        if(!registeredUser) res.status(404).json({error :'Invalide details'})
-           
-        const match = await bcrypt.compareSync(password,registeredUser.password)
+        if(!registeredUser){ 
+            return res.status(404).json({error :'Invalide details'});
+        }
+          
+        const match = await bcrypt.compare(password,registeredUser.password)
 
         if(!match){
             res.status(404).json({error :'Invalid details'})
-        }else{
-            //attach jwt token
         }
 
     }catch(err){
-        res.status(400).json({error:'err'})
+        res.status(400).json({error:'Registeration err'})
     }
-})
+    let token;
+    try{
+        token = jwt.sign(
+            {
+            username : registeredUser.username,
+            password: registeredUser.password
+        },process.env.JWT_SECRET,{expiresIn : '1h'})
+    }catch(err){
+        res.status(400).json({error:`JWT err ${err}`})
+    }
+    res.status(200).json({
+        success : true,
+        data:{
+            username : registeredUser.username,
+            token: token
+        }
+    });
+});
 
 router.get('/profile',(req,res)=>{})
 
