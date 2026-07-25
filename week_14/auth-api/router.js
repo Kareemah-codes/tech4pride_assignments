@@ -32,7 +32,26 @@ router.post('/register',async (req, res)=>{
     
 })
 
-router.post('/login',(req,res)=>{})
+router.post('/login',async(req,res)=>{
+    //Collect user login, verify email,verify password, attached jwt token
+    const{username,password} =req.body
+    const user = await readUsers()
+    try{
+        const registeredUser = user.find(u=>u.username===username)
+        if(!registeredUser) res.status(404).json({error :'Invalide details'})
+           
+        const match = await bcrypt.compareSync(password,registeredUser.password)
+
+        if(!match){
+            res.status(404).json({error :'Invalid details'})
+        }else{
+            //attach jwt token
+        }
+
+    }catch(err){
+        res.status(400).json({error:'err'})
+    }
+})
 
 router.get('/profile',(req,res)=>{})
 
